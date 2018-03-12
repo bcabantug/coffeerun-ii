@@ -8,6 +8,7 @@
   }
 
   Truck.prototype.createOrder = function(order) {
+    /*eslint-disable no-console*/
     console.log("Adding order for " + order.emailAddress); /*ESLint error: unexpected console statment*/
     this.db.add(order.emailAddress, order);
 
