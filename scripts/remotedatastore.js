@@ -23,8 +23,7 @@
     $.ajax(this.serverUrl, {
       type: "POST",
       contentType: "application/json",
-      data: JSON.stringify( //use parse to parse the object data recieved
-        //title: "Walk the dog"
+      data: JSON.stringify( //use stringify to take the json data to set as strings to add
         val
       ),
       success: function(serverResponse) {
@@ -69,7 +68,7 @@
     //   console.log(serverResponse);
     //   cb(serverResponse);
     // });
-    $.ajax(this.serverUrl + "/" + key, {
+    $.ajax(this.serverUrl + "?emailAddress=" + key, {
       type: "GET",
       success: function(serverResponse) {
         // Do something
@@ -82,9 +81,20 @@
     });
   };
 
+  //remove order
   RemoteDataStore.prototype.remove = function (key){
-    $.ajax(this.serverUrl + "/" + key, {
-      type: "DELETE"
+    console.log(key);
+    //created variable to keep url since serverUrl gets dereferenced
+    var urlink = this.serverUrl;
+    $.ajax(this.serverUrl + "?emailAddress=" + key, {
+      type: "GET",
+      success: function (key){
+        //pass the key in again to call the ajax delete
+        $.ajax(urlink + "/" + key[0].id,{
+          type: "DELETE"
+        }
+        );
+      }
     });
   };
 

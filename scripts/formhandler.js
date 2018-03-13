@@ -3,7 +3,7 @@
   "use strict";
   var App = window.App || {};
   var $ = window.jQuery;
-
+  /*eslint-disable no-console*/
   function FormHandler(selector) {
     //code will go here
     if (!selector) {
