@@ -1,18 +1,18 @@
-(function (window){
+(function(window) {
   "use strict";
   var App = window.App || {};
   var $ = window.jQuery;
   /*eslint-disable no-console*/
 
   //constructor for RemoteDataStore
-  function RemoteDataStore(url){
-    if(!url){
+  function RemoteDataStore(url) {
+    if (!url) {
       throw new Error("No remote URL supplied.");
     }
     this.serverUrl = url;
   }
 
-  RemoteDataStore.prototype.add = function(key, val){
+  RemoteDataStore.prototype.add = function(key, val) {
     //code will go here
     // //jQuery post method to process post request
     // $.post(this.serverUrl, val, function(serverResponse){
@@ -38,12 +38,7 @@
 
   //use the callback to get the data from get all to return to
 
-  RemoteDataStore.prototype.getAll = function(cb){ //cb is callback cb
-  //   //code will go here
-    // $.get(this.serverUrl, function(serverResponse){
-    //   console.log(serverResponse);
-    //   cb(serverResponse);
-    // });
+  RemoteDataStore.prototype.getAll = function(cb) { //cb is callback cb
     $.ajax(this.serverUrl, {
       type: "GET",
       success: function(serverResponse) {
@@ -57,16 +52,16 @@
       }
     });
 
-  //   $.get(this.serverUrl, function (serverResponse) { //no value passed since we are requesting for data
-  //     /*eslint-disable no-console*/
-  //     console.log(serverResponse);
-  //     cb(serverResponse);
-  //     //cb(serverResponse);
-  //   });
+    //   $.get(this.serverUrl, function (serverResponse) { //no value passed since we are requesting for data
+    //     /*eslint-disable no-console*/
+    //     console.log(serverResponse);
+    //     cb(serverResponse);
+    //     //cb(serverResponse);
+    //   });
   };
 
   //function to get individual orders
-  RemoteDataStore.prototype.get = function (key, cb){
+  RemoteDataStore.prototype.get = function(key, cb) {
     // $.get(this.serverUrl + "/" + key, function (serverResponse){
     //   console.log(serverResponse);
     //   cb(serverResponse);
@@ -85,18 +80,17 @@
   };
 
   //remove order
-  RemoteDataStore.prototype.remove = function (key){
+  RemoteDataStore.prototype.remove = function(key) {
     console.log(key);
     //created variable to keep url since serverUrl gets dereferenced
     var urlink = this.serverUrl;
-    $.ajax(this.serverUrl + "?emailAddress=" + key, {
+    $.ajax(this.serverUrl + "?emailAddress=" + key, { //ajax get to retrieve the data fir the key
       type: "GET",
-      success: function (key){
+      success: function(key) {
         //pass the key in again to call the ajax delete
-        $.ajax(urlink + "/" + key[0].id,{
+        $.ajax(urlink + "/" + key[0].id, { //call ajax delete
           type: "DELETE"
-        }
-        );
+        });
       }
     });
   };

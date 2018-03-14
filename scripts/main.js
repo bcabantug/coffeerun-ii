@@ -13,12 +13,12 @@
   var CheckList = App.CheckList;
   var remoteDS = new RemoteDataStore(SERVER_URL);
   // var webshim = window.webshim;
-  var myTruck = new Truck("ncc-1701", remoteDS ); //new DataStore()
+  var myTruck = new Truck("ncc-1701", remoteDS); //new DataStore()
   window.myTruck = myTruck;
   var checkList = new CheckList(CHECKLIST_SELECTOR);
   //takes the present list of data in deployd and calls remoteDS to getAll
-  remoteDS.getAll(function (data) { //function data to cb(callback in remotedatastore) to use the data (array of objects)
-    data.forEach(function (order) { //for each object in the array, add into checkList and add to row
+  remoteDS.getAll(function(data) { //function data to cb(callback in remotedatastore) to use the data (array of objects)
+    data.forEach(function(order) { //for each object in the array, add into checkList and add to row
       checkList.addRow(order);
     });
   });
