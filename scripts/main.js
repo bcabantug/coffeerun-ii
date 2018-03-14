@@ -22,16 +22,10 @@
       checkList.addRow(order);
     });
   });
+  //
   checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
 
-  //
-  //checkList.addRow(myTruck.printOrder(myTruck));
-  //var t = remoteDS.getAll();
-  //console.log(t);
-  //t.forEach(function(i){
-  //  checkList.addRow(i);
-  //});
-  //
+
   var formHandler = new FormHandler(FORM_SELECTOR);
 
   formHandler.addSubmitHandler(function(data) {
@@ -41,6 +35,4 @@
   //call to put inputHandler for Validation.isCompanyEmail
   formHandler.addInputHandler(Validation.isCompanyEmail);
 
-  //console.log(formHandler);
-  //
 })(window);
