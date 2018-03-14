@@ -33,6 +33,9 @@
     //Add the new row instance's $element property to the checklist
     this.$element.append(rowElement.$element);
   };
+  //jquery to load page
+  //main.js
+  ////checklist constructor
 
   //remove rowElement
   CheckList.prototype.removeRow = function(email) {
@@ -41,7 +44,7 @@
       .closest("[data-coffee-order=\"checkbox\"]")
       .remove();
   };
-
+  //cpmsatructor for row for coffee order
   function Row(coffeeOrder) {
     var $div = $("<div></div>", {
       "data-coffee-order": "checkbox",

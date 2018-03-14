@@ -36,6 +36,8 @@
     });
   };
 
+  //use the callback to get the data from get all to return to
+
   RemoteDataStore.prototype.getAll = function(cb){ //cb is callback cb
   //   //code will go here
     // $.get(this.serverUrl, function(serverResponse){
@@ -47,6 +49,7 @@
       success: function(serverResponse) {
         // Do something
         console.log(serverResponse);
+        //send the data from serverresponse (data from the deployd database) to cb to callback
         cb(serverResponse);
       },
       error: function(xhr) {

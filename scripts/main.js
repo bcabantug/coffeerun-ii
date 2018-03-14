@@ -16,10 +16,21 @@
   var myTruck = new Truck("ncc-1701", remoteDS ); //new DataStore()
   window.myTruck = myTruck;
   var checkList = new CheckList(CHECKLIST_SELECTOR);
+  //takes the present list of data in deployd and calls remoteDS to getAll
+  remoteDS.getAll(function (data) { //function data to cb(callback in remotedatastore) to use the data (array of objects)
+    data.forEach(function (order) { //for each object in the array, add into checkList and add to row
+      checkList.addRow(order);
+    });
+  });
   checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
 
   //
   //checkList.addRow(myTruck.printOrder(myTruck));
+  //var t = remoteDS.getAll();
+  //console.log(t);
+  //t.forEach(function(i){
+  //  checkList.addRow(i);
+  //});
   //
   var formHandler = new FormHandler(FORM_SELECTOR);
 
